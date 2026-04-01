@@ -6,14 +6,14 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 14:13:48 by tkroon            #+#    #+#             */
-/*   Updated: 2026/04/01 11:15:58 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/04/01 14:58:28 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdlib.h>
 
-static int	ft_intlength(unsigned long n)
+static int	ft_intlength(unsigned int n)
 {
 	int	l;
 
@@ -28,7 +28,7 @@ static int	ft_intlength(unsigned long n)
 	return (l);
 }
 
-static char	*itstr(char	*res, unsigned long in, int l)
+static char	*itstr(char	*res, unsigned int in, int l)
 {
 	res[l] = '\0';
 	l--;
@@ -43,7 +43,7 @@ static char	*itstr(char	*res, unsigned long in, int l)
 	return (res);
 }
 
-static char	*ft_itoa(unsigned long n)
+static char	*ft_itoa(unsigned int n)
 {
 	int		l;
 	char	*res;
@@ -56,11 +56,17 @@ static char	*ft_itoa(unsigned long n)
 	return (res);
 }
 
-int	ft_putudec(unsigned long n)
+int	ft_putudec(unsigned int n)
 {
 	char	*numb;
 
 	numb = ft_itoa(n);
 	ft_putstr(numb);
+	free(numb);
 	return (ft_intlength(n));
 }
+
+// int main ()
+// {
+// 		ft_putudec(12435234234);
+// }

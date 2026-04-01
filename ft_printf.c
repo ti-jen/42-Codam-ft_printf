@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 12:09:29 by tkroon            #+#    #+#             */
-/*   Updated: 2026/04/01 11:49:37 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/04/01 14:54:02 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,47 +15,60 @@
 #include "ft_printf.h"
 #include <stdio.h>
 
-int ft_printf(const char *format, ...)
+static int	ft_putconversion(int format, va_list arg)
 {
-	int i = 0;
-	int j = 0;
-	int c = 0;
-	va_list arg;
-	va_start(arg, format);
-	while(format[i] != '\0')
+	int	c;
+
+	c = 0;
+	if (format == 'c')
+		c = ft_putchar(va_arg(arg, int));
+	else if (format == 's')
+		c = ft_putstr(va_arg(arg, char *));
+	else if (format == 'p')
+		c = ft_putadres(va_arg(arg, unsigned long));
+	else if (format == 'd' || format == 'i')
+		c = ft_putdec(va_arg(arg, int));
+	else if (format == 'u' )
+		c = ft_putudec(va_arg(arg, unsigned int));
+	else if (format == 'x')
+		c = ft_puthexlow(va_arg(arg, int));
+	else if (format == 'X')
+		c = ft_puthexhigh(va_arg(arg, int));
+	else if (format == '%')
 	{
-	j = ft_strprint(format, i);
-	i = i + j;
-	c = c + j;
-	if (format[i] == '\0')
-	{
-		va_end(arg);
-		return(c);
-	}
-	else if(format[i + 1] == 'c')
-		c = c + ft_putchar(va_arg(arg, int));
-	else if(format[i + 1] == 's')
-		c = c + ft_putstr(va_arg(arg, char*));
-	else if(format[i + 1] == 'p')
-		c = c + ft_putadres(va_arg(arg, unsigned long));
-	else if(format[i + 1] == 'd' || format[i + 1] == 'i')
-		c = c + ft_putdec(va_arg(arg, int));
-	else if(format[i + 1] == 'u' )
-		c = c + ft_putudec(va_arg(arg, unsigned long));
-	else if(format[i + 1] == 'x')
-		c = c + ft_puthexlow(va_arg(arg, int));
-	else if(format[i + 1] == 'X')
-		c = c + ft_puthexhigh(va_arg(arg, int));
-	else if(format[i + 1] == '%')
-		{
-			write(1, "%",1);
-			c++;
-		}
-	i = i + 2;		
+		write(1, "%", 1);
+		c++;
 	}
 	return (c);
 }
 
+int	ft_printf(const char *format, ...)
+{
+	int		i;
+	int		j;
+	int		c;
+	va_list	arg;
+
+	i = 0;
+	j = 0;
+	c = 0;
+	va_start(arg, format);
+	while (format[i] != '\0')
+	{
+		j = ft_strprint(format, i);
+		i = i + j;
+		c = c + j;
+		if (format[i] == '\0')
+		{
+			va_end(arg);
+			return (c);
+		}
+		c = c + ft_putconversion(format[i + 1], arg);
+		i = i + 2;
+	}
+	va_end(arg);
+	return (c);
+}
 
 // int main ()
 // {
