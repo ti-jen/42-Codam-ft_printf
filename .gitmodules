@@ -1,0 +1,3 @@
+[submodule "libft"]
+	path = libft
+	url = git@vogsphere-v2.codam.nl:vogsphere/intra-uuid-c3a17df4-bef9-4004-a8d8-0f2be93a197c-7335098-tkroon
