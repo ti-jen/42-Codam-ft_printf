@@ -23,7 +23,7 @@ all: lib
 out: lib
 	$(CC) $(CFLAGS) test.c -L. $(NAME).a
 
-lib: comp libft
+lib: comp libf
 	ar rcs $(NAME).a $(OBJ) $(FTOBJ)
 
 comp: 
@@ -37,5 +37,5 @@ fclean: clean
 
 re: fclean all
 
-libft:
+libf:
 	cd libft && make comp
