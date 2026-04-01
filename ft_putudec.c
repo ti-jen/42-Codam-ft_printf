@@ -1,22 +1,66 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putint.c                                        :+:      :+:    :+:   */
+/*   ft_putudec.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 14:13:48 by tkroon            #+#    #+#             */
-/*   Updated: 2026/03/31 14:18:46 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/04/01 11:15:58 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "ft_printf.h"
+#include <stdlib.h>
 
-void ft_putint(int n)
+static int	ft_intlength(unsigned long n)
 {
-	char *numb;
+	int	l;
+
+	l = 0;
+	if (n == 0)
+		return (1);
+	while (n != 0)
+	{
+		l++;
+		n = n / 10;
+	}
+	return (l);
+}
+
+static char	*itstr(char	*res, unsigned long in, int l)
+{
+	res[l] = '\0';
+	l--;
+	if (in == 0)
+		res[l] = '0';
+	while (in > 0)
+	{
+		res[l] = in % 10 + '0';
+		in = in / 10;
+		l--;
+	}
+	return (res);
+}
+
+static char	*ft_itoa(unsigned long n)
+{
+	int		l;
+	char	*res;
+
+	l = ft_intlength(n);
+	res = malloc(l + 1);
+	if (res == NULL)
+		return (NULL);
+	itstr(res, n, l);
+	return (res);
+}
+
+int	ft_putudec(unsigned long n)
+{
+	char	*numb;
 
 	numb = ft_itoa(n);
 	ft_putstr(numb);
+	return (ft_intlength(n));
 }
