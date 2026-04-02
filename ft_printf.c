@@ -6,14 +6,13 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 12:09:29 by tkroon            #+#    #+#             */
-/*   Updated: 2026/04/01 14:54:02 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/04/02 12:17:27 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdarg.h>
 #include <unistd.h>
 #include "ft_printf.h"
-#include <stdio.h>
 
 static int	ft_putconversion(int format, va_list arg)
 {
