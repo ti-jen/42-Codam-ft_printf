@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 14:13:48 by tkroon            #+#    #+#             */
-/*   Updated: 2026/04/01 14:58:28 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/04/06 10:34:49 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static char	*itstr(char	*res, unsigned int in, int l)
 	return (res);
 }
 
-static char	*ft_itoa(unsigned int n)
+static char	*ft_itoaun(unsigned int n)
 {
 	int		l;
 	char	*res;
@@ -60,7 +60,7 @@ int	ft_putudec(unsigned int n)
 {
 	char	*numb;
 
-	numb = ft_itoa(n);
+	numb = ft_itoaun(n);
 	ft_putstr(numb);
 	free(numb);
 	return (ft_intlength(n));

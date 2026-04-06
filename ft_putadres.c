@@ -6,13 +6,12 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 10:22:35 by tkroon            #+#    #+#             */
-/*   Updated: 2026/04/01 10:38:14 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/04/06 10:30:29 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <string.h>
-#include "libft/libft.h"
 #include "ft_printf.h"
 
 static void	ft_decthex(unsigned long adr)

@@ -6,11 +6,10 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 13:38:05 by tkroon            #+#    #+#             */
-/*   Updated: 2026/04/01 14:29:35 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/04/06 10:47:57 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "ft_printf.h"
 
 static int	ft_intlength(int n)

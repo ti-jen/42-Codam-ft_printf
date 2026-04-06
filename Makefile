@@ -1,8 +1,6 @@
 CC = gcc
 NAME = libftprintf
 CFLAGS = -Wall -Wextra -Werror
-FTOBJ = libft/ft_strlcpy.o\
-libft/ft_itoa.o\
 
 SRC = ft_putchar \
 ft_printf\
@@ -13,6 +11,8 @@ ft_putdec\
 ft_putudec\
 ft_puthexlow\
 ft_puthexhigh\
+ft_itoa\
+ft_strlcpy\
 
 SRCS = $(addsuffix .c, $(SRC))
 OBJ	= $(addsuffix .o, $(SRC))
@@ -20,11 +20,11 @@ OBJ	= $(addsuffix .o, $(SRC))
 
 all: lib
 
-# test: lib
-# 	$(CC) $(CFLAGS) test.c -L. $(NAME).a
+test: lib
+	$(CC) $(CFLAGS) test.c -L. $(NAME).a
 
-lib: comp libf
-	ar rcs $(NAME).a $(OBJ) $(FTOBJ)
+lib: comp 
+	ar rcs $(NAME).a $(OBJ)
 
 comp: 
 	$(CC) $(CFLAGS) -c $(SRCS)
@@ -36,6 +36,3 @@ fclean: clean
 	rm $(NAME).a || true
 
 re: fclean all
-
-libf:
-	cd libft && make comp
