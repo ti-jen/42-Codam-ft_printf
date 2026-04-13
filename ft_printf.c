@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 12:09:29 by tkroon            #+#    #+#             */
-/*   Updated: 2026/04/02 12:17:27 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/04/13 10:33:36 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ int	ft_printf(const char *format, ...)
 	i = 0;
 	j = 0;
 	c = 0;
+	if (!format)
+		return (-1);
 	va_start(arg, format);
 	while (format[i] != '\0')
 	{
@@ -58,10 +60,7 @@ int	ft_printf(const char *format, ...)
 		i = i + j;
 		c = c + j;
 		if (format[i] == '\0')
-		{
-			va_end(arg);
-			return (c);
-		}
+			break ;
 		c = c + ft_putconversion(format[i + 1], arg);
 		i = i + 2;
 	}
