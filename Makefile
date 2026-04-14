@@ -20,8 +20,8 @@ OBJ	= $(addsuffix .o, $(SRC))
 
 all: lib
 
-test: lib
-	$(CC) $(CFLAGS) test.c -L. $(NAME).a
+# test: lib
+# 	$(CC) $(CFLAGS) test.c -L. $(NAME).a
 
 lib: comp 
 	ar rcs $(NAME).a $(OBJ)
