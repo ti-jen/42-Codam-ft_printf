@@ -7,7 +7,7 @@ a recreation of the printf function
 ## Description
 
 the goal of this project was to recreate the printf function from "stdio.h". 
-the project makes a static library with the fake printf function. there is are also another library(libft) that helps te main library to excecute the function. 
+the project makes a static library with the fake printf function. 
 
 The way I replicated printf is by taking a string of characters and printing each one until a % is encountered. When a % is found, the program checks the next character to determine the format specifier, and then retrieves and prints the corresponding data from the va_list using helper functions.
 
